@@ -32,6 +32,6 @@
 
 <script>
 export default {
-  name: 'AppPlayer'
+  name: 'Player'
 }
 </script>

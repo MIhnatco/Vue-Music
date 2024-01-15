@@ -1,14 +1,14 @@
 <script>
 import AppHeader from './components/AppHeader.vue'
-import AppAuth from './components/AppAuth.vue'
-import AppPlayer from './components/AppPlayer.vue'
+import Auth from './components/Auth.vue'
+import Player from './components/Player.vue'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
-    AppAuth,
-    AppPlayer
+    Auth,
+    Player
   }
 }
 </script>
@@ -250,8 +250,8 @@ export default {
   </section>
 
   <!-- Player -->
-  <AppPlayer />
+  <Player />
 
   <!-- Auth Modal -->
-  <AppAuth />
+  <Auth />
 </template>

@@ -159,7 +159,7 @@ import { mapState, mapWritableState } from 'pinia'
 import useModalStore from '@/stores/modal'
 
 export default {
-  name: 'AppAuth',
+  name: 'Auth',
   data() {
     return {
       tab: 'login'
