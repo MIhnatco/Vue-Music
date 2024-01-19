@@ -8,6 +8,8 @@ import router from './router'
 import './assets/base.css'
 import './assets/main.css'
 
+
+import './includes/firebase'
 const app = createApp(App)
 
 app.use(createPinia())
