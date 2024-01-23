@@ -9,11 +9,21 @@ import './assets/base.css'
 import './assets/main.css'
 
 
-import './includes/firebase'
-const app = createApp(App)
+import {auth}  from './includes/firebase'
 
-app.use(createPinia())
-app.use(router)
-app.use(VeeValidatePlugin)
+let app;
 
-app.mount('#app')
+auth.onAuthStateChanged(() => {
+    if(!app){
+
+        app = createApp(App)
+    
+        app.use(createPinia())
+        app.use(router)
+        app.use(VeeValidatePlugin)
+        
+        app.mount('#app')
+    }
+})
+
+
