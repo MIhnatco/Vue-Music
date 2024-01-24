@@ -58,7 +58,7 @@ export default {
       login_in_submission: false,
       login_alert_variant: 'bg-blue-500',
       login_alert_message: 'Please wait! We are logging you in.'
-    }
+    } 
   },
   methods: {
     ...mapActions(useUserStore, ['authenticate']), 
@@ -83,7 +83,8 @@ export default {
       this.login_alert_variant = 'bg-green-500'
       this.login_alert_message = 'Success! You are now logged in.'
 
-      console.log(values)
+      //reload method will refresh the page
+      window.location.reload();
     }
   }
 }
