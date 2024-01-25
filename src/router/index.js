@@ -17,7 +17,11 @@ let routes = [
   {
     name: 'manage',
     path: '/manage-music',
-    component: Manage
+    component: Manage,
+    beforeEnter: (to, from, next) => {
+      console.log('Manage Route Guard')
+      next();
+    }
   },
   {
     //redirect
@@ -35,6 +39,13 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   linkExactActiveClass: 'text-yellow-500'
+})
+
+//glogal guard
+router.beforeEach((to, from, next) => {
+  console.log('Global Guard')
+
+  next()
 })
 
 export default router
