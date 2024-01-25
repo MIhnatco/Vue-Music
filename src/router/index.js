@@ -5,7 +5,7 @@ import Manage from '@/views/Manage.vue'
 
 let routes = [
   {
-    name: 'home', 
+    name: 'home',
     path: '/',
     component: Home
   },
@@ -16,8 +16,18 @@ let routes = [
   },
   {
     name: 'manage',
-    path: '/manage',
+    path: '/manage-music',
     component: Manage
+  },
+  {
+    //redirect
+    path: '/manage',
+    redirect: { name: 'manage' }
+  },
+  {
+    //catch-all
+    path: '/catchAll(.*)*',
+    redirect: { name: 'home' }
   }
 ]
 
