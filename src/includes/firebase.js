@@ -2,6 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 
 import 'firebase/firestore'
+import 'firebase/storage'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -24,6 +25,8 @@ const firebaseConfig = {
  //object with methods and properties to interact with database 
  const db = firebase.firestore()
 
+ const storage = firebase.storage();
+
  //object contains the name of the database
  //we export it to be accessible in multiple components
  //this function returns an object with methods and properties 
@@ -33,5 +36,6 @@ const firebaseConfig = {
  export {
   auth, 
   db, 
-  usersCollection
+  usersCollection, 
+  storage
  }
