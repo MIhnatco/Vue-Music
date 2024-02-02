@@ -20,7 +20,7 @@
         <h5>Drop your files here</h5>
       </div>
 
-      <input type="file" multiple @change="upload($event)"/>
+      <input type="file" multiple @change="upload($event)" />
 
       <hr class="my-6" />
       <!-- Progess Bars -->
@@ -53,6 +53,7 @@ export default {
       uploads: []
     }
   },
+  props: ['addSong'],
   methods: {
     upload($event) {
       this.is_dragover = false
@@ -91,18 +92,20 @@ export default {
             console.log(error)
           },
           async () => {
-
             const song = {
-                uid: auth.currentUser.uid,
-                display_name: auth.currentUser.displayName,
-                original_name: task.snapshot.ref.name, 
-                modified_name: task.snapshot.ref.name,
-                genre: "", 
-                comment_count: 0,
-            };
+              uid: auth.currentUser.uid,
+              display_name: auth.currentUser.displayName,
+              original_name: task.snapshot.ref.name,
+              modified_name: task.snapshot.ref.name,
+              genre: '',
+              comment_count: 0
+            }
 
-            song.url = await task.snapshot.ref.getDownloadURL();
-            await songsCollection.add(song);
+            song.url = await task.snapshot.ref.getDownloadURL()
+            const songRef = await songsCollection.add(song)
+            const songSnapshot = await songRef.get()
+
+            this.addSong(songSnapshot)
 
             this.uploads[uploadIndex].variant = 'bg-green-400'
             this.uploads[uploadIndex].icon = 'fas fa-check'
@@ -110,16 +113,16 @@ export default {
           }
         )
       })
-    }, 
-    cancelUploads(){
+    },
+    cancelUploads() {
       this.uploads.forEach((upload) => {
-        upload.task.cancel();
+        upload.task.cancel()
       })
     }
   },
-  beforeUnmount(){
+  beforeUnmount() {
     this.uploads.forEach((upload) => {
-      upload.task.cancel();
+      upload.task.cancel()
     })
   }
 }
