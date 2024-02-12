@@ -8,6 +8,7 @@
     <div class="container mx-auto flex items-center">
       <!-- Play/Pause Button -->
       <button
+        @click.prevent="newSong(song)"
         type="button"
         class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none"
       >
@@ -87,8 +88,9 @@
 
 <script>
 import { songsCollection, auth, commentsCollection } from '@/includes/firebase'
-import { mapState } from 'pinia'
+import { mapState, mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
+import usePlayerStore from '@/stores/player'
 
 export default {
   name: 'Song',
@@ -133,6 +135,7 @@ export default {
     this.getComments()
   },
   methods: {
+    ...mapActions(usePlayerStore, ['newSong']),
     async addComment(values, { resetForm }) {
       this.comment_in_submission = true
       this.comment_show_alert = true
@@ -149,11 +152,11 @@ export default {
 
       await commentsCollection.add(comment)
 
-      //updating the number of songs 
-      this.song.comment_count += 1;
+      //updating the number of songs
+      this.song.comment_count += 1
       await songsCollection.doc(this.$route.params.id).update({
         comment_count: this.song.comment_count
-      });
+      })
 
       this.getComments()
 
