@@ -1,7 +1,7 @@
 <script>
 import AppHeader from './components/AppHeader.vue'
 import Auth from './components/Auth.vue'
-import Player from './components/Player.vue'
+import AppPlayer from './components/Player.vue'
 
 import { mapWritableState } from 'pinia'
 import useUserStore from '@/stores/user'
@@ -13,7 +13,7 @@ export default {
   components: {
     AppHeader,
     Auth,
-    Player
+    AppPlayer
   },
   computed: {
     ...mapWritableState(useUserStore, ['userLoggedIn'])
@@ -31,12 +31,11 @@ export default {
   <!-- Header -->
   <AppHeader />
 
-
   <router-view></router-view>
 
   <!-- Player -->
-  <Player />
- 
+  <AppPlayer />
+
   <!-- Auth Modal -->
   <Auth />
 </template>
