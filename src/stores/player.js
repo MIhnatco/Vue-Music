@@ -12,12 +12,10 @@ export default defineStore('player', {
   }),
   actions: {
     async newSong(song) {
-
       //stop playing current song and start a new one
-      if(this.sound instanceof Howl){
+      if (this.sound instanceof Howl) {
         this.sound.unload()
       }
-
 
       this.current_song = song
 
@@ -53,6 +51,24 @@ export default defineStore('player', {
       if (this.sound.playing()) {
         requestAnimationFrame(this.progress)
       }
+    },
+    updateSeek(event) {
+      //is there song beeing played
+      if (!this.sound.playing) {
+        return
+      }
+
+      const { x, width } = event.currentTarget.getBoundingClientRect()
+      //document = 2000, timeline = 1000, clickX = 1000 (relative to document) ...
+      //distance = 500
+      const clickX = event.clientX - x
+      const percentage = clickX / width
+      const seconds = this.sound.duration() * percentage
+
+      this.sound.seek(seconds)
+
+      //progress
+      this.sound.once('seek', this.progress)
     }
   },
   getters: {
