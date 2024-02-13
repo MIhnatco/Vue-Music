@@ -2,8 +2,11 @@
   <div class="fixed bottom-0 left-0 bg-white px-4 py-2 w-full">
     <!-- Track Info -->
     <div class="text-center">
-      <span id="song" class="song-title font-bold">Song Title</span> by
-      <span id="artist" class="song-artist">Artist</span>
+      <span id="song" class="song-title font-bold" v-if="current_song.modified_name">{{
+        current_song.modified_name
+      }}</span>
+      by
+      <span id="artist" class="song-artist">{{ current_song.display_name }}</span>
     </div>
     <div class="flex flex-nowrap gap-4 items-center">
       <!-- Play/Pause Button -->
@@ -18,17 +21,20 @@
       <!-- Scrub Container  -->
       <div class="w-full h-2 rounded bg-gray-200 relative cursor-pointer">
         <!-- Player Ball -->
-        <span class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg" style="left: 50%">
+        <span
+          class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg"
+          :style="{ left: playerProgress }"
+        >
           <i class="fas fa-circle"></i>
         </span>
         <!-- Player Progress Bar-->
         <span
           class="block h-2 rounded bg-gradient-to-r from-green-500 to-green-400"
-          style="width: 50%"
+          :style="{ width: playerProgress }"
         ></span>
       </div>
       <!-- Duration -->
-      <div class="player-duration">{{duration}}</div>
+      <div class="player-duration">{{ duration }}</div>
     </div>
   </div>
 </template>
@@ -43,7 +49,7 @@ export default {
     ...mapActions(usePlayerStore, ['toggleAudio'])
   },
   computed: {
-    ...mapState(usePlayerStore, ['playing', 'seek', 'duration'])
+    ...mapState(usePlayerStore, ['playing', 'seek', 'duration', 'playerProgress', 'current_song'])
   }
 }
 </script>
