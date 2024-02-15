@@ -31,7 +31,11 @@ export default {
   <!-- Header -->
   <AppHeader />
 
-  <router-view></router-view>
+  <router-view v-slot="{ Component }">
+    <Transition name="fade" mode="out-in">
+      <component :is="Component"></component>
+    </Transition>
+  </router-view>
 
   <!-- Player -->
   <AppPlayer />
@@ -39,3 +43,18 @@ export default {
   <!-- Auth Modal -->
   <Auth />
 </template>
+
+<style>
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.5s linear;
+}
+
+.fade-leave-to {
+  transition: all 0.5s linear;
+  opacity: 0;
+}
+</style>
