@@ -5,6 +5,8 @@ import VeeValidatePlugin from './includes/validation'
 import App from './App.vue'
 import router from './router'
 
+import Icon from './directives/Icon'
+
 import './assets/base.css'
 import './assets/main.css'
 
@@ -21,6 +23,7 @@ auth.onAuthStateChanged(() => {
         app.use(createPinia())
         app.use(router)
         app.use(VeeValidatePlugin)
+        app.directive('icon', Icon)
         
         app.mount('#app')
     }
