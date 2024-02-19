@@ -10,7 +10,7 @@ export default {
     return {
       songs: [],
       maxPerPage: 3,
-      pendingRequest: false,
+      pendingRequest: false
     }
   },
   async created() {
@@ -33,11 +33,11 @@ export default {
       }
     },
     async getSongs() {
-      if(this.pendingRequest){
-        return;
+      if (this.pendingRequest) {
+        return
       }
 
-      this.pendingRequest = true;
+      this.pendingRequest = true
       let snapshots
 
       if (this.songs.length) {
@@ -61,14 +61,13 @@ export default {
         })
       })
 
-      this.pendingRequest = false;
+      this.pendingRequest = false
     }
   }
 }
 </script>
 
 <template>
-
   <main>
     <!-- Introduction -->
     <section class="mb-8 py-20 text-white text-center relative">
@@ -80,9 +79,9 @@ export default {
         <div class="text-white main-header-content">
           <h1 class="font-bold text-5xl mb-5">Listen to Great Music!</h1>
           <p class="w-full md:w-8/12 mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et dolor mollis, congue
-            augue non, venenatis elit. Nunc justo eros, suscipit ac aliquet imperdiet, venenatis et
-            sapien. Duis sed magna pulvinar, fringilla lorem eget, ullamcorper urna.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et dolor mollis,
+            congue augue non, venenatis elit. Nunc justo eros, suscipit ac aliquet imperdiet,
+            venenatis et sapien. Duis sed magna pulvinar, fringilla lorem eget, ullamcorper urna.
           </p>
         </div>
       </div>
@@ -95,10 +94,9 @@ export default {
     <!-- Main Content -->
     <section class="container mx-auto">
       <div class="bg-white rounded border border-gray-200 relative flex flex-col">
-        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200" v-icon>
+        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200" v-icon.right.yellow="'headphones-alt'">
           <span class="card-title">Songs</span>
           <!-- Icon -->
-         
         </div>
 
         <!-- Playlist -->
@@ -108,6 +106,5 @@ export default {
         <!-- .. end Playlist -->
       </div>
     </section>
-
   </main>
 </template>
