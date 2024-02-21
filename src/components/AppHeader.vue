@@ -1,6 +1,6 @@
 <template>
   <header id="header" class="bg-gray-700 flex items-center">
-    <nav class="container flex justify-start items-center py-5 px-4">
+    <nav class="container flex justify-start items-center py-5 px-4 mx-auto">
       <!-- App Name -->
       <router-link
         id="title"
@@ -33,9 +33,17 @@
             </li>
           </template>
         </ul>
+
+        <ul class="ml-auto mr-12">
+          <li>
+            <a href="#" class="px-2 text-white" @click.prevent="changeLocale">
+              {{ currentLocale }}
+            </a>
+          </li>
+        </ul>
       </div>
+      <h4 class="text-white">{{ $d(new Date(), 'long') }}</h4>
     </nav>
-    <h4 class="text-white">{{ $d(new Date(), 'long') }}</h4>
   </header>
 </template>
 
@@ -47,7 +55,10 @@ import useUserStore from '@/stores/user'
 export default {
   name: 'AppHeader',
   computed: {
-    ...mapStores(useModalStore, useUserStore)
+    ...mapStores(useModalStore, useUserStore),
+    currentLocale() {
+      return this.$i18n.locale === 'fr' ? 'French' : 'English'
+    }
   },
   methods: {
     toggleAuthModal() {
@@ -59,6 +70,9 @@ export default {
       if (this.$route.meta.requiresAuth) {
         this.$router.push({ name: 'home' })
       }
+    },
+    changeLocale() {
+      this.$i18n.locale = this.$i18n.locale === 'fr' ? 'en' : 'fr'
     }
   }
 }
