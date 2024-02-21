@@ -13,14 +13,25 @@ export default createI18n({
   },
   numberFormats: {
     en: {
-        currency: {
-            style: "currency", currency: "USD" 
-        }
-    }, 
+      currency: {
+        style: 'currency',
+        currency: 'USD'
+      }
+    },
     ja: {
-        currency: {
-            style: "currency", currency: "JPY"
-        }
+      currency: {
+        style: 'currency',
+        currency: 'JPY'
+      }
+    }
+  },
+  datetimeFormats: {
+    en: {
+      long: {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      }
     }
   }
 })

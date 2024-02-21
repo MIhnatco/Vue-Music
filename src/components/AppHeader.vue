@@ -1,6 +1,6 @@
 <template>
-  <header id="header" class="bg-gray-700">
-    <nav class="container mx-auto flex justify-start items-center py-5 px-4">
+  <header id="header" class="bg-gray-700 flex items-center">
+    <nav class="container flex justify-start items-center py-5 px-4">
       <!-- App Name -->
       <router-link
         id="title"
@@ -35,6 +35,7 @@
         </ul>
       </div>
     </nav>
+    <h4 class="text-white">{{ $d(new Date(), 'long') }}</h4>
   </header>
 </template>
 
