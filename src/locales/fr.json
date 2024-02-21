@@ -1,5 +1,12 @@
 {
-    "home": {
-        "listen" : "Écoutez de la bonne musique!"
-    }
+  "home": {
+    "listen": "Écoutez de la bonne musique!"
+  },
+  "manage": {
+    "my_songs": "Mes chansons"
+  },
+  "upload": {
+    "upload": "Télécharger",
+    "drop_files": "Déposez vos fichiers ici"
+  }
 }
