@@ -27,6 +27,10 @@ const firebaseConfig = {
 
  const storage = firebase.storage();
 
+ db.enablePersistence().catch((error) => {
+  console.log(`Firebase persistence error ${error.code}`)
+ })
+
  //object contains the name of the database
  //we export it to be accessible in multiple components
  //this function returns an object with methods and properties 

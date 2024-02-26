@@ -7,13 +7,14 @@ import router from './router'
 
 import Icon from './directives/Icon'
 import i18n from './includes/i18n'
+import { registerSW} from 'virtual:pwa-register';
 
 import './assets/base.css'
 import './assets/main.css'
 
 
 import {auth}  from './includes/firebase'
-
+registerSW({immediate: true})
 let app;
 
 auth.onAuthStateChanged(() => {
