@@ -9,6 +9,8 @@ import Icon from './directives/Icon'
 import i18n from './includes/i18n'
 import { registerSW} from 'virtual:pwa-register';
 
+import GlobalComponents from './includes/_globals'
+
 import './assets/base.css'
 import './assets/main.css'
 
@@ -26,6 +28,7 @@ auth.onAuthStateChanged(() => {
         app.use(router)
         app.use(VeeValidatePlugin)
         app.use(i18n)
+        app.use(GlobalComponents)
         app.directive('icon', Icon)
         
         app.mount('#app')
