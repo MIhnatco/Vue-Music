@@ -10,13 +10,19 @@ import i18n from './includes/i18n'
 import { registerSW} from 'virtual:pwa-register';
 
 import GlobalComponents from './includes/_globals'
+import progressBar from './includes/progressbar'
 
 import './assets/base.css'
 import './assets/main.css'
+import 'nprogress/nprogress.css'
 
 
 import {auth}  from './includes/firebase'
 registerSW({immediate: true})
+
+progressBar(router)
+
+
 let app;
 
 auth.onAuthStateChanged(() => {
