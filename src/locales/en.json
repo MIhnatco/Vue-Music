@@ -1,6 +1,8 @@
 {
   "home": {
-    "listen": "Listen to Great Music!"
+    "listen": "Listen to Great Music!", 
+    "subtitle" : "Harmonize Your Soul: Let the Melodies Carry You Away", 
+    "songs": "Songs"
   },
   "song": {
     "comment_count": "No comments | 1 comment | {count} comments"

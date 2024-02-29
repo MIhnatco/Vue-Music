@@ -1,6 +1,8 @@
 {
   "home": {
-    "listen": "Écoutez de la bonne musique!"
+    "listen": "Écoutez de la bonne musique!",
+    "subtitle" : "Harmonise ton âme : laisse-toi emporter par les mélodies ",
+    "songs" : "Chansons"
   },
   "manage": {
     "my_songs": "Mes chansons"
